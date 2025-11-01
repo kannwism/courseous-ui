@@ -23,8 +23,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Call the product explorer API
+    console.log("Calling product explorer API with URL:", url);
     const response = await fetch(
-      "https://product-explorer-eegp.onrender.com/explore",
+      "https://product-explorer-1hn5.onrender.com/explore",
       {
         method: "POST",
         headers: {
@@ -34,7 +35,9 @@ export async function POST(request: NextRequest) {
       }
     );
 
+    console.log("Response status:", response.status);
     const data = await response.json();
+    console.log("Response data:", data);
 
     if (!response.ok) {
       return NextResponse.json(
@@ -53,8 +56,9 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error("Error in explore API:", error);
+    console.error("Error details:", error instanceof Error ? error.message : String(error));
     return NextResponse.json(
-      { error: "Internal server error" },
+      { error: "Internal server error", details: error instanceof Error ? error.message : String(error) },
       { status: 500 }
     );
   }
