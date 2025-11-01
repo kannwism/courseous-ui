@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
 
     // Call the product explorer API
     const response = await fetch(
-      "https://product-explorer-rge6.onrender.com/explore",
+      "https://product-explorer-eegp.onrender.com/explore",
       {
         method: "POST",
         headers: {
